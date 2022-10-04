@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+/* Styling the body */
+body {
+    margin: 0;
+    padding: 0;
+    background: url("https://nftevening.com/wp-content/uploads/2021/09/Zed-Run-featured.jpg");
+    background-size: 100%, 100%;
+}
+    
+/* Styling section, giving background
+    image and dimensions */
+section {
+    width: 100%;
+    height: 100vh;
+}
+    
+/* Styling the left floating section */
+section .leftBox {
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding: 50px;
+    box-sizing: border-box;
+    position: relative; 
+    top: 50%;                         
+ transform: translate(0, -50%); 
+    
+}
+    
+/* Styling the background of
+    left floating section */
+section .leftBox .content {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    transition: .5s;
+    position: relative; 
+    top: 50%;                         
+ transform: translate(0, -50%); 
+}
+    
+/* Styling the hover effect 
+    of left floating section */
+section .leftBox .content:hover {
+    background: #e91e63;
+}
+    
+/* Styling the header of left
+    floating section */
+section .leftBox .content h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 50px;
+    text-transform: uppercase;
+    text-align: center;
+}
+    
+/* Styling the paragraph of
+    left floating section */
+section .leftBox .content p {
+    margin: 10px 0 0;
+    padding: 0;
+}       
+  
+    
+/* Styling the three events section */
+section .events {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    float: right;
+    box-sizing: border-box;
+}
+  
+section .events h1 {
+    margin: 0;
+    padding: 10px;
+    font-size: 50px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+}
+  
+/* Styling the links of
+the events section */
+section .events ul {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 40px;
+    box-sizing: border-box;
+}
+    
+/* Styling the lists of the event section */
+section .events ul li {
+    display: block; 
+    list-style: none;
+    background: #fff;
+    box-sizing: border-box;
+    height: 175px;
+    width: 500px;
+    margin: 15px 0;
+}
+  
+/* Styling the time class of events section */
+section .events ul li .time {
+    display: block;
+    position: relative;
+    padding: 20px;
+    background: #262626;
+    box-sizing: border-box;
+    width: 30%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    transition: .5s;
+}
+    
+/* Styling the hover effect
+    of events section */
+section .events ul li:hover .time {
+    background: #e91e63;
+}
+  
+/* Styling the header of time
+    class of events section */
+section .events ul li .time h2 {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 50px;
+    line-height: 30px;
+}
+  
+/* Styling the texts of time
+class of events section */
+section .events ul li .time h2 span {
+    font-size: 20px;
+}
+  
+/* Styling the details
+class of events section */
+section .events ul li .details {
+    padding: 20px;
+    background: #fff;
+    box-sizing: border-box;
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+    
+/* Styling the header of the
+details class of events section */
+section .events ul li .details h3 {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+}
+  
+/* Styling the lists of details
+class of events section */
+section .events ul li .details p {
+    position: relative;
+    margin: 10px 0 0;
+    padding: 0;
+    font-size: 16px;
+}
+  
+/* Styling the links of details
+class of events section */
+section .events ul li .details a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1.5px solid #262626;
+    margin-top: 8px;
+    font-size: 18px;
+    transition: .5s;
+    float:right;
+}
+    
+ /* Styling the details class's hover effect */
+ section .events ul li .details a:hover {
+     background: #e91e63;
+     color: #fff;
+     border-color: #e91e63;
+ }
+       
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  opacity: 0.5;
+  filter: alpha(opacity=50); 
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+	
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+section .events .all {
+ border-radius:2em;
+  background-color : #333;
+  color: #f2f2f2;
+  padding: 10px 20px;
+  font-size: 17px;
+  float: right; 
+}
+
+#viewall {
+  position: fixed;
+  bottom: -4px;
+  right: 10px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  cursor:pointer;
+  
+}
+	
+#viewall button:hover {
+  background-color: #ddd;
+  color: black;
+  
+}
+
+#viewall button.active {
+  background-color: #04AA6D;
+  color: white;
+  cursor:pointer;
+}
+
+
+</style>
+</head>
+<body>
+	<div class="topnav">
+		  <a href="#login">Login</a>
+		  <a href="#signup">Sign Up</a>
+	</div>
+    <section>
+        <div class="leftBox">
+            <div class="content">
+                <h1>
+                    Hybrid <br> Horse Racing <br> Events
+                </h1>
+            </div>
+        </div>
+        <div class="events">
+        	<h1>Upcoming Events</h1>
+            <ul>
+                <li th:each="event : ${events}">
+                    <div class="time">
+                        <h2>
+                            <td th:text="${event.dateTime.getDayOfMonth()}"></td>
+                            <br>
+                            <span>
+                            	<td th:text="${event.dateTime.getMonth()}"></td>
+                            </span>
+                        </h2>
+                    </div>
+                    <div class="details">
+                        <h3>
+                            <td th:text="${event.name}"></td>
+                        </h3>
+						<p>
+                            <td th:text="${event.description}"></td>
+                        </p>
+                        <a href="#">Register Now</a>
+                    </div>
+                    <div style="clear: both;"></div>
+                </li>
+            </ul>
+            <div id="viewall">
+            	<form action="#" th:action="@{/events/getAll}" method="get">
+		        	<button class="all" type="submit">View All</button>
+    			</form>
+			</div>
+        </div>
+    </section>
+</body>
+</html>
