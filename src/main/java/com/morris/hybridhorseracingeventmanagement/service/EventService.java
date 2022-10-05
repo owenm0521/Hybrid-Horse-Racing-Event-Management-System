@@ -5,7 +5,11 @@ import com.morris.hybridhorseracingeventmanagement.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * EventService
@@ -21,18 +25,7 @@ public class EventService {
     }
     
     public void updateEvent(Event event) {
-    	/* 
-    	List<Event> events = eventRepository.findAll(); 
-    	for(int i = 0; i < events.size(); i++) {
-
-    		Event e = events.get(i);
-
-    		if (e.getId() == id) {
-    		    events.set(i, event);
-    		}
-    	 }	
-    	 */ 
-    	eventRepository.save(event); 
+    	eventRepository.save(event);
     }
     
     public void deleteEvent(long id) {
@@ -56,15 +49,22 @@ public class EventService {
     }
     
     public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+        return eventRepository.findAll().stream()
+        		.sorted(Comparator.comparing(Event :: getDateTime))
+        		.collect(Collectors.toList());
     }
     
     public List<Event> getUpcomingEvents(){
-    	List<Event> all = eventRepository.findAll(); 
-    	if(all.size() < 3) {
-    		return all; 
+    	List<Event> upcoming = new ArrayList<Event>(); 
+    	List<Event> all = this.getAllEvents(); 
+    	for(int i = 0, j = 0; i < all.size() && j < 3; i++) {
+    		Event e = all.get(i); 
+    		if(e.getDateTime().isAfter(LocalDateTime.now())) {
+    			upcoming.add(e); 
+    			j++; 
+    		}
     	}
-    	return all.subList(0, 3); 
+    	return upcoming; 
     }
 
 }

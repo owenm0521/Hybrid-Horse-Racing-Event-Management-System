@@ -5,6 +5,9 @@ import javax.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 @Entity
 @Table(name="events")
@@ -21,7 +24,7 @@ public class Event {
     private String location;
 
     @Column(name="date_time")
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @DateTimeFormat(iso=DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime dateTime;
     
     @Column(name="description")
@@ -30,7 +33,7 @@ public class Event {
     public Event(String name, String location, LocalDateTime dateTime, String description) {
         this.name = name;
         this.location = location;
-        this.dateTime = dateTime;
+        this.dateTime = dateTime; 
         this.description = description; 
     }
 
@@ -65,7 +68,45 @@ public class Event {
     public LocalDateTime getDateTime() {
         return dateTime;
     }
-
+    
+    /*
+     * @param length - "short" returns abbreviated month, "long" returns full month 
+     */
+    public String getMonth(String length) {
+    	if(length.equals("short")){
+    		return dateTime.getMonth().getDisplayName(TextStyle.SHORT, Locale.US).toUpperCase(); 
+    	}
+    	return Character.toString(Character.toUpperCase(dateTime.getMonth().toString().charAt(0))) + dateTime.getMonth().toString().substring(1).toLowerCase(); 
+    }
+    
+    public String getDayOfWeek() {
+    	return Character.toString(Character.toUpperCase(dateTime.getDayOfWeek().toString().charAt(0))) + dateTime.getDayOfWeek().toString().substring(1).toLowerCase(); 
+    }
+    
+    public String getTime() {
+    	int hour = dateTime.getHour(); 
+    	boolean am = true; 
+    	if(hour == 0) {
+    		hour = 12; 
+    	}else if(hour == 12) {
+    		am = false; 
+    	}else if(hour > 12){
+        	hour -= 12; 
+        	am = false; 
+    	}
+    	
+    	String minute; 
+    	if(dateTime.getMinute() < 10) {
+    		minute = "0" + Integer.toString(dateTime.getMinute()); 
+    	}else {
+    		minute = Integer.toString(dateTime.getMinute()); 
+    	}
+    	if(am) {
+    		return hour + ":" + minute + " AM"; 
+    	}
+    	return hour + ":" + minute + " PM"; 
+    }
+    	
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }

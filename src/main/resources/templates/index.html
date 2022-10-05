@@ -39,7 +39,7 @@ section .leftBox .content {
     transition: .5s;
     position: relative; 
     top: 50%;                         
- transform: translate(0, -50%); 
+ 	transform: translate(0, -50%); 
 }
     
 /* Styling the hover effect 
@@ -283,7 +283,7 @@ section .events .all {
                             <td th:text="${event.dateTime.getDayOfMonth()}"></td>
                             <br>
                             <span>
-                            	<td th:text="${event.dateTime.getMonth()}"></td>
+                            	<td th:text="${event.getMonth('short')}"></td>
                             </span>
                         </h2>
                     </div>

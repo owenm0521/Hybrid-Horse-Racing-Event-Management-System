@@ -3,12 +3,14 @@ package com.morris.hybridhorseracingeventmanagement.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.morris.hybridhorseracingeventmanagement.model.Event;
+import com.morris.hybridhorseracingeventmanagement.model.Registration;
 import com.morris.hybridhorseracingeventmanagement.service.EventService;
 import com.morris.hybridhorseracingeventmanagement.service.RegistrationService;
 
@@ -33,22 +35,28 @@ public class EventController {
   	return eventService.getEventById(id);
   }
   
-  @PostMapping("/addNew")
+  @PostMapping("/addNewEvent")
   public String addEvent(Event event) {
       eventService.saveEvent(event);
       return "redirect:/events/getAll";
   }
   
-  @RequestMapping(value="/update", method = {RequestMethod.PUT, RequestMethod.GET})
+  @RequestMapping(value="/updateEvent", method = {RequestMethod.PUT, RequestMethod.GET})
   public String updateEvent(Event event) {
 	  eventService.updateEvent(event); 
 	  return "redirect:/events/getAll";
   }
   
-  @RequestMapping(value="/delete", method = {RequestMethod.DELETE, RequestMethod.GET})	
+  @RequestMapping(value="/deleteEvent", method = {RequestMethod.DELETE, RequestMethod.GET})	
   public String delete(long id) {
   	eventService.deleteEvent(id);
   	return "redirect:/events/getAll";
+  }
+  
+  @RequestMapping(value="/registerForEvent", method = {RequestMethod.POST, RequestMethod.GET})
+  public String registerForEvent(Registration registration) {
+	  registrationService.saveRegistration(registration); 
+	  return "redirect:/events/getAll";
   }
   
 

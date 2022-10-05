@@ -20,10 +20,14 @@ public class Registration {
 
     @Column(name="userEmail")
     private String userEmail;
+    
+    @Column(name="checkedIn")
+    private boolean checkedIn;
 
     public Registration(long eventId, String userEmail) {
         this.eventId = eventId;
         this.userEmail = userEmail;
+        this.checkedIn = false; 
     }
     
     public Registration() {
@@ -53,6 +57,14 @@ public class Registration {
 
     public void setEventId(long eventId) {
         this.eventId = eventId;
+    }
+    
+    public boolean getCheckedIn() {
+        return this.checkedIn;
+    }
+
+    public void setCheckedIn(boolean checkedIn) {
+        this.checkedIn = checkedIn;
     }
 
 }
