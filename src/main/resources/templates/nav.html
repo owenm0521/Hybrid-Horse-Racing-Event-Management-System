@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5" th:fragment="navbar">
+<head>
+	<link type=text/css href="/css/nav.css" rel="stylesheet">
+</head>
+<body>
+  	<section class="top-nav">
+    	<input id="menu-toggle" type="checkbox" />
+   		<label class='menu-button-container' for="menu-toggle">
+   			<div class='menu-button'></div>
+ 		</label>
+   		<ul class="menu">
+     		<li><a id="home" th:href="@{/}">Home</a></li>
+	     	<li><a id="events" th:href="@{/events/getAll}">Events</a></li>
+   		</ul>
+  		<div>Hybrid Horse Racing</div>
+  		<div class="login-btns">
+  			<div sec:authorize="isAuthenticated()" id="signedin" th:switch="${#authentication.getPrincipal().getUserRole()}"> 
+	  			<span th:case="${T(com.morris.hybridhorseracingeventmanagement.model.UserRole).ADMIN}">
+					Signed in as Admin
+				</span>
+				<span th:case="${T(com.morris.hybridhorseracingeventmanagement.model.UserRole).USER}"
+					th:text="'Signed in as' + ' ' + ${#authentication.getPrincipal().getFirstName()} + ' ' +  ${#authentication.getPrincipal().getLastName()}">
+				</span>
+				<span th:case="*" th:text="'Signed in as' + ${#authentication.getPrincipal().getUsername()}"></span>
+  			</div>
+  			<a sec:authorize="!isAuthenticated()" id="login" th:href="@{/login}">Sign In</a>
+			<a sec:authorize="!isAuthenticated()" id="signup" th:href="@{/signup}">Sign Up</a>
+			<a sec:authorize="isAuthenticated()" id="logout" th:href="@{/logout}">Sign Out</a>
+  		</div>
+  </section>
+</body>
+</html>

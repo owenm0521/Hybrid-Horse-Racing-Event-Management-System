@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.morris.hybridhorseracingeventmanagement.model.Event;
 
-/**
+/*
  * EventRepository
  */
 @Repository

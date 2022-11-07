@@ -1,0 +1,106 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+* {
+	margin: 0; padding: 0;
+} 
+html {
+	height: 100%;
+	background: linear-gradient(to bottom,rgba(26,6,57,1) 5%, rgba(34,25,73,1) 20%, rgba(54,73,115,1) 58%, rgba(85,113,142,1) 100%);
+}
+
+body {
+	font-family: montserrat, arial, verdana;
+}
+
+/*form styles*/
+#loginform {
+	width: 400px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+}
+
+#loginform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+	position: relative;
+}
+
+/*Hide all except first fieldset*/
+#loginform fieldset:not(:first-of-type) {
+	display: none;
+}
+
+/*inputs*/
+#loginform input, #loginform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+
+/*buttons*/
+#loginform .action-button {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#loginform .action-button:hover, #loginform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+#loginform div{
+	font-family: montserrat;
+	color: red;
+	font-size: 13px;
+	text-align: center;
+	position: relative;
+	display: inline-block; 
+}
+
+#loginform span{
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+	text-align: center;
+	position: relative;
+	display: inline-block; 
+}
+
+#loginform span > a{
+	text-decoration: none; 
+	color: blue; 
+} 
+
+/*headings*/
+.fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
