@@ -22,7 +22,7 @@ body{
 	height: 675px; 
 	outline: none;
 	border-color: #9ecaed;
-	box-shadow: 0 0 60px 1px skyblue;
+	box-shadow: 0 0 20px 3px skyblue;
 }
 
 .table-title {

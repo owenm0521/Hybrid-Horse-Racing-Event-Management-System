@@ -3,10 +3,10 @@ package com.morris.hybridhorseracingeventmanagement.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.morris.hybridhorseracingeventmanagement.model.Event;
@@ -53,20 +53,11 @@ public class EventController {
   	return "redirect:/events/getAll";
   }
   
-  @RequestMapping(value="/registerForEvent", method = {RequestMethod.POST, RequestMethod.GET})
+  @RequestMapping(value="/registerForEvent", method = {RequestMethod.PUT, RequestMethod.GET})
   public String registerForEvent(Registration registration) {
 	  registrationService.saveRegistration(registration); 
 	  return "redirect:/events/getAll";
   }
-  
-
-  /*
-  @PostMapping()
-  public String addRegistration(@ModelAttribute("registration") Registration registration, Model model) {
-      registrationService.saveRegistration(registration); 
-      return "events";
-  }
-  */
  
   
 }
