@@ -5,17 +5,14 @@ h2 {
 	text-align: center;
 }
 
-html, body {
-	margin: 0;
-	height: 100%;
-}
-
 * {
 	font-family: "Raleway";
 	box-sizing: border-box;
 }
 
 .top-nav {
+	position:fixed; 
+	z-index:100; 
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -23,7 +20,9 @@ html, body {
 	background-color: #00BAF0;
 	background: linear-gradient(to left,rgba(26,6,57,1) 5%, rgba(34,25,73,1) 20%, rgba(54,73,115,1) 58%, rgba(85,113,142,1) 100%);
 	color: #FFF;
+	font-size:16px; 
 	height: 50px;
+	width:100%;
 	padding: 1em;
 }
 
@@ -45,7 +44,7 @@ html, body {
 }
 
 .login-btns > a{
-	text-decoration:none;
+	text-decoration:none !important;
 	color:white; 
 	padding: 4px; 
 }
@@ -162,6 +161,5 @@ html, body {
 }
 
 .menu > li > a:hover {
-	background-color: #ddd;
-	color: black;
+	color: #337ab7;
 }

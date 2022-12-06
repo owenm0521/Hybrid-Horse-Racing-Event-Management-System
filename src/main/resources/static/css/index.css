@@ -1,20 +1,17 @@
-/* Styling the body */
 body {
     margin: 0;
     padding: 0;
     background: url("https://nftevening.com/wp-content/uploads/2021/09/Zed-Run-featured.jpg");
-    background-size: 100%, 100%;
-    height:auto; 
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 }
     
-/* Styling section, giving background
-    image and dimensions */
 section {
     width: 100%;
     height: 100vh;
 } 
     
-/* Styling the left floating section */
 section .leftBox {
     width: 50%;
     height: 100%;
@@ -27,8 +24,6 @@ section .leftBox {
     
 }
     
-/* Styling the background of
-    left floating section */
 section .leftBox .content {
     color: #fff;
     background: rgba(0, 0, 0, 0.5);
@@ -39,14 +34,10 @@ section .leftBox .content {
  	transform: translate(0, -50%); 
 }
     
-/* Styling the hover effect 
-    of left floating section */
 section .leftBox .content:hover {
     background: #e91e63;
 }
     
-/* Styling the header of left
-    floating section */
 section .leftBox .content h1 {
     margin: 0;
     padding: 0;
@@ -55,19 +46,16 @@ section .leftBox .content h1 {
     text-align: center;
 }
     
-/* Styling the paragraph of
-    left floating section */
 section .leftBox .content p {
     margin: 10px 0 0;
     padding: 0;
 }       
   
-    
-/* Styling the three events section */
 section .events {
     position: relative;
     width: 50%;
-    height: 100%;
+    height: 94%;
+    top:6%;
     background: rgba(0, 0, 0, 0.5);
     float: right;
     box-sizing: border-box;
@@ -82,9 +70,10 @@ section .events h1 {
     color: #fff;
 }
   
-/* Styling the links of
-the events section */
 section .events ul {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -93,18 +82,17 @@ section .events ul {
     box-sizing: border-box;
 }
     
-/* Styling the lists of the event section */
 section .events ul li {
-    display: block; 
+    display: flex; 
     list-style: none;
     background: #fff;
     box-sizing: border-box;
-    height: 175px;
-    width: 500px;
+    min-height: 175px;
+    width: 100%;
+    min-width: 600px; 
     margin: 15px 0;
 }
   
-/* Styling the time class of events section */
 section .events ul li .time {
     display: block;
     position: relative;
@@ -112,20 +100,15 @@ section .events ul li .time {
     background: #262626;
     box-sizing: border-box;
     width: 30%;
-    height: 100%;
     float: left;
     text-align: center;
     transition: .5s;
 }
     
-/* Styling the hover effect
-    of events section */
 section .events ul li:hover .time {
     background: #e91e63;
 }
   
-/* Styling the header of time
-    class of events section */
 section .events ul li .time h2 {
     position: absolute;
     margin: 0;
@@ -138,14 +121,10 @@ section .events ul li .time h2 {
     line-height: 30px;
 }
   
-/* Styling the texts of time
-class of events section */
 section .events ul li .time h2 span {
     font-size: 20px;
 }
   
-/* Styling the details
-class of events section */
 section .events ul li .details {
     padding: 20px;
     background: #fff;
@@ -155,8 +134,6 @@ section .events ul li .details {
     float: left;
 }
     
-/* Styling the header of the
-details class of events section */
 section .events ul li .details h3 {
     position: relative;
     margin: 0;
@@ -164,8 +141,6 @@ section .events ul li .details h3 {
     font-size: 22px;
 }
   
-/* Styling the lists of details
-class of events section */
 section .events ul li .details p {
     position: relative;
     margin: 10px 0 0;
@@ -173,8 +148,6 @@ section .events ul li .details p {
     font-size: 16px;
 }
   
-/* Styling the links of details
-class of events section */
 section .events ul li .details a {
     text-decoration: none;
     padding: 10px 15px;
@@ -185,13 +158,36 @@ section .events ul li .details a {
     float:right;
 }
     
- /* Styling the details class's hover effect */
- section .events ul li .details a:hover {
+section .events ul li .details a:hover {
+     background: #e91e63;
+     color: #fff;
+     border-color: #e91e63;
+}
+ 
+.registration {
+    display: flex;
+    margin-right: 10px;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.registration a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1.5px solid #262626;
+    margin-top: 8px;
+    font-size: 18px;
+    transition: .5s;
+    float:right;
+}
+
+.registration a:hover {
      background: #e91e63;
      color: #fff;
      border-color: #e91e63;
  }
-
+ 
 section .events .all {
  border-radius:2em;
   background-color : #333;

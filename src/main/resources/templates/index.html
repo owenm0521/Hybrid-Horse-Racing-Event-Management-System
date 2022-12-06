@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security5">
 <head>
 	<link type=text/css href="/css/index.css" rel="stylesheet">
 </head>
@@ -24,12 +24,14 @@
                     <div class="details">
                         <h3><td th:text="${event.name}"></td></h3>
 						<p><td th:text="${event.description}"></td></p>
-                        <a href="#">Register Now</a>
                     </div>
-                    <div style="clear: both;"></div>
+                    <div class="registration" th:if="${#authorization.expression('!hasAuthority(''ADMIN'')')}">
+						<a th:href="@{/events/getEvent/(id=${event.id})}" class="btn btn-info" id="registerButton" data-toggle="modal">Register</a>
+					</div>
                 </li>
             </ul>
         </div>
     </section>
+    <div th:replace="eventRegistrationModal :: eventRegistrationModal"></div>
 </body>
 </html>
