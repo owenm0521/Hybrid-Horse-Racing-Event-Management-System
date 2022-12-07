@@ -7,6 +7,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 @Entity
@@ -29,6 +31,11 @@ public class Event {
     
     @Column(name="description")
     private String description;
+    
+    
+    @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.REMOVE, mappedBy="event")
+    List<Registration> registrations; 
+     
 
     public Event(String name, String location, LocalDateTime dateTime, String description) {
         this.name = name;
@@ -39,8 +46,7 @@ public class Event {
 
     public Event() {
     }
-
-
+    
     public long getId() {
         return id;
     }
@@ -117,6 +123,16 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public void addRegistration(Registration registration) {
+        if(registrations == null) registrations = new ArrayList<Registration>();
+        registration.setEvent(this);
+        registrations.add(registration);
+    }
+    
+    public List<Registration> getRegistrations(){
+    	return registrations; 
     }
 
 }

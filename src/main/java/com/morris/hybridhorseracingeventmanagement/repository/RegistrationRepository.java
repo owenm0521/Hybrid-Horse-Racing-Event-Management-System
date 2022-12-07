@@ -14,8 +14,6 @@ import com.morris.hybridhorseracingeventmanagement.model.Registration;
 public interface RegistrationRepository extends JpaRepository<Registration, Long> {
 
 	List<Registration> findByUserEmail(String userEmail); 
-	
-	List<Registration> findByEventId(long eventId); 
     
     Registration findById(long id); 
     

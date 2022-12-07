@@ -54,7 +54,9 @@ public class EventController {
   }
   
   @RequestMapping(value="/registerForEvent", method = {RequestMethod.PUT, RequestMethod.GET})
-  public String registerForEvent(Registration registration) {
+  public String registerForEvent(long eventId, Registration registration) {
+	  Event event = eventService.getEventById(eventId); 
+	  event.addRegistration(registration); 
 	  registrationService.saveRegistration(registration); 
 	  return "redirect:/events/getAll";
   }

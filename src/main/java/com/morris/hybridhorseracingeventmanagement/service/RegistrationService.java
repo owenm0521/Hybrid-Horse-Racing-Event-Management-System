@@ -16,7 +16,7 @@ public class RegistrationService {
     private RegistrationRepository registrationRepository;
 
     public void saveRegistration(Registration registration) {
-        registrationRepository.save(registration); 
+    	registrationRepository.save(registration); 
     }
     
     public void deleteRegistration(long id) {
