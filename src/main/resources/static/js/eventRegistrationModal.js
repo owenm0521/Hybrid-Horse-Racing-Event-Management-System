@@ -1,6 +1,6 @@
 $('document').ready(function(){	
 	
-	$('#registerButton').on('click',function(event){	
+	$("td.registerBtn a:contains('Register')").on('click',function(event){	
 		event.preventDefault();
 		var href = $(this).attr('href');
 		$.get(href, function(event){
@@ -29,8 +29,12 @@ $('document').ready(function(){
 			if(regSuccess){
 				alert('Your registration has been processed successfully!');
 				regSuccess = false; 
-			} 
+			}
 		}); 
-	});	 
+	});	
+	
+	$('#eventRegistrationModal').on('hidden.bs.modal',function(){
+		$(this).find('form').trigger('reset');
+	}); 
 	
 });

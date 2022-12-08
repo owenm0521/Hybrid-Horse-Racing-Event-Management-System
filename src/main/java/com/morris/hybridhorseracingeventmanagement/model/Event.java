@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
@@ -32,7 +34,7 @@ public class Event {
     @Column(name="description")
     private String description;
     
-    
+    @JsonManagedReference
     @OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.REMOVE, mappedBy="event")
     List<Registration> registrations; 
      

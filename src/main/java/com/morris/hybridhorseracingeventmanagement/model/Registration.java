@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.morris.hybridhorseracingeventmanagement.service.EventService;
 
 @Entity
@@ -22,6 +23,7 @@ public class Registration {
     
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name="eventId")
+    @JsonBackReference
     private Event event; 
     
     @Column(name="userEmail")
